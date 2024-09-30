@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUAN - guayna</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        #bouncingText {
+            font-size: 48px;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="bouncingText">JUAN</div>
+
+    <script>
+        const text = document.getElementById('bouncingText');
+        let posX = 0, posY = 0;
+        let speedX = 2, speedY = 2;
+        const textWidth = text.offsetWidth;
+        const textHeight = text.offsetHeight;
+
+        function animate() {
+            posX += speedX;
+            posY += speedY;
+            
+            if (posX + textWidth > window.innerWidth || posX < 0) {
+                speedX = -speedX;
+            }
+            if (posY + textHeight > window.innerHeight || posY < 0) {
+                speedY = -speedY;
+            }
+            text.style.left = posX + 'px';
+            text.style.top = posY + 'px';
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
